@@ -8,6 +8,7 @@ import interview.ad.placement.model.Output;
 public class Writer {
 	
 	public void write(Output data) {
+		
 	}
 
 }
