@@ -1,4 +1,4 @@
-package interview.ad.placement;
+package interview.ad.placement.integrationTest;
 
 import java.util.Date;
 import java.util.GregorianCalendar;

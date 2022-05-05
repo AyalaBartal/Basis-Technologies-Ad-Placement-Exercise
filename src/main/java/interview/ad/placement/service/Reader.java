@@ -18,8 +18,6 @@ import interview.ad.placement.model.Placement;
 public class Reader {
 	
 	private final int CURRENT_YEAR = 22;
-	private File file;
-	private Scanner scanner;
 	
 	public Input readFromFiles(String placementsFilePath, String deliveriesFilePath) {
 		Input input = new Input();
@@ -39,9 +37,9 @@ public class Reader {
 	
 	private List<String> getLinesFromFile(String path){
 		List<String> enteries = new ArrayList<String>();
-		file = new File(path);
+		File file = new File(path);
 		try {
-			scanner = new Scanner(file);
+			Scanner scanner = new Scanner(file);
 			String entery = scanner.nextLine();
 			while(scanner.hasNextLine()) {
 				entery = scanner.nextLine();

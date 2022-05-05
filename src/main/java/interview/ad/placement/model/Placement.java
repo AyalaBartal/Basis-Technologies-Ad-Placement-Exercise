@@ -23,6 +23,22 @@ public class Placement {
 		return this.name;
 	}
 	
+	public int getId() {
+		return this.id;
+	}
+	
+	public Date getStart() {
+		return start;
+	}
+
+	public Date getEnd() {
+		return end;
+	}
+
+	public int getCmp() {
+		return cmp;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

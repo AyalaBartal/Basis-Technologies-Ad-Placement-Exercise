@@ -4,17 +4,29 @@ import java.util.Date;
 
 public class Delivery {
 	
-	private int id;
+	private int placmentId;
 	private Date date;
 	private long impressions;
 	
-	public Delivery(int id, Date date, long impressions) {
+	public Delivery(int placementId, Date date, long impressions) {
 		super();
-		this.id = id;
+		this.placmentId = placementId;
 		this.date = date;
 		this.impressions = impressions;
 	}
 
+	public int getPlacmentId() {
+		return placmentId;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+	
+	public long getImpressions() {
+		return impressions;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -29,10 +41,11 @@ public class Delivery {
 				return false;
 		} else if (!date.equals(other.date))
 			return false;
-		if (id != other.id)
+		if (placmentId != other.placmentId)
 			return false;
 		if (impressions != other.impressions)
 			return false;
 		return true;
 	}	
+
 }
