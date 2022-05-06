@@ -29,8 +29,10 @@ public class Core {
 				for(Delivery delivery: data.getDeliveries().get(id)) {
 					impressions += delivery.getImpressions();
 				}
-				long cost = impressions/1000 * cmp;
-				output.addResult(new Result(name, startDate, endDate, impressions, cmp, cost));
+
+				float cost = ((float)impressions/1000) * cmp;
+
+				output.addResult(new Result(name, startDate, endDate, impressions, cmp, Math.round(cost)));
 			}
 		}
 		
