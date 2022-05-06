@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 public final class DateUtils {
 	
 	private static final int CURRENT_YEAR = 22;
-	
+		
 	public static Date getDate(String date) {
 		String[] details = date.split("/");
 		
@@ -21,7 +21,7 @@ public final class DateUtils {
 	public static Date getDate(int year, int month, int day) {
 		if(year <= CURRENT_YEAR)
 			year += 2000;
-		return new GregorianCalendar(year, month-1, day).getTime();
+		return new GregorianCalendar(year, month - 1, day).getTime();
 	}
 	
 	public static String toString(Date date) {
@@ -29,7 +29,7 @@ public final class DateUtils {
 		calendar.setTime(date);
 		
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(calendar.get(Calendar.MONTH));
+		stringBuilder.append(calendar.get(Calendar.MONTH) + 1);
 		stringBuilder.append("/");
 		stringBuilder.append(calendar.get(Calendar.DAY_OF_MONTH));
 		stringBuilder.append("/");

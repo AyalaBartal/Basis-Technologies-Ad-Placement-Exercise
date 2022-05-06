@@ -54,9 +54,9 @@ public class Result {
 	public String toString() {
 		String name = this.name + " ";
 		String dateRange = "(" + DateUtils.toString(this.startDate) + "-" +  DateUtils.toString(this.endDate) +  "): ";
-		String impressions = formatNumber(this.impressions) + " impressions ";
-		String cpm = "@ $" + this.cpm + " CPM ";
-		String cost = "= $" + formatNumber(this.cost);
+		String impressions = formatNumber(this.impressions) + " impressions";
+		String cpm = this.cpm == Integer.MIN_VALUE? ", " : (" @ $" + this.cpm + " CPM  = ");
+		String cost = "$" + formatNumber(this.cost);
 		
 		return name + dateRange + impressions + cpm + cost;
 	}
@@ -72,11 +72,24 @@ public class Result {
 			numberList.add((int)(number));
 		
 		StringBuilder sb = new StringBuilder();
-		for(int i = numberList.size() - 1; i > 0; i--)
-			sb.append(numberList.get(i) + ",");
-		sb.append(numberList.get(0));
+		for(int i = numberList.size() - 1; i > 0; i--) {
+			if(i != numberList.size() - 1) {
+				sb.append(formatNumberWithLeedingZeros(numberList.get(i))).append(",");
+			}else
+				sb.append(numberList.get(i) + ",");	
+		}
+		sb.append(formatNumberWithLeedingZeros(numberList.get(0)));
 			
 		return sb.toString();
+	}
+	
+	private String formatNumberWithLeedingZeros(int number) {
+		if(number / 10 == 0)
+			return "00" + number;
+		else if(number / 100 == 0)
+			return "0" + number;
+		else
+			return number + "";
 	}
 	
 }

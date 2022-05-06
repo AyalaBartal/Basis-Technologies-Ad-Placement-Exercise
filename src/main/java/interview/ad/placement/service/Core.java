@@ -1,6 +1,7 @@
 package interview.ad.placement.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -33,6 +34,33 @@ public class Core {
 				output.addResult(new Result(name, startDate, endDate, impressions, cmp, Math.round(cost)));
 			}
 		}
+		
+		return output;
+	}
+
+	public Output processDataByDateRange(CoreData data, Date startDate, Date endDate) {
+		if(startDate.after(endDate))
+			return processDataByDateRange(data, startDate, endDate);
+		
+		Output output = new Output();
+		
+		float cost = 0;
+		long impressions = 0;
+		
+		if(data != null && data.getPlacements().size() != 0) {
+			for(Integer id: data.getPlacements().keySet()) {
+				int cmp = data.getPlacements().get(id).getCmp();
+				
+				for(Delivery delivery: data.getDeliveries().get(id)) {
+					impressions += delivery.getImpressions();
+					cost += ((float)delivery.getImpressions()/1000) * cmp;
+					
+				}
+
+			}
+		}
+		
+		output.addResult(new Result("Total", startDate, endDate, impressions, Integer.MIN_VALUE, Math.round(cost)));
 		
 		return output;
 	}

@@ -1,6 +1,6 @@
 package interview.ad.placement;
 
-import javax.annotation.PostConstruct;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,9 +28,14 @@ public class Program {
 	}
 
 	public String processFromFileByPlacment(String placmentFilePath, String deliveryFilePath) {
-
 		Input input = reader.readFromFiles(placmentFilePath, deliveryFilePath);
 		Output output = core.processDataByPlacement(new CoreDataBuilder().add(input).build());
+		return writer.writeToCommandLine(output);
+	}
+	
+	public String processByDateRange(String placmentFilePath, String deliveryFilePath, Date startDate, Date endDate) {
+		Input input = reader.readFromFiles(placmentFilePath, deliveryFilePath);
+		Output output = core.processDataByDateRange(new CoreDataBuilder().add(input, startDate, endDate).build(), startDate, endDate);
 		return writer.writeToCommandLine(output);
 
 	}
