@@ -1,6 +1,8 @@
 package interview.ad.placement.model;
 
+
 import java.util.Date;
+import utils.DateUtils;
 
 public class Result {
 	
@@ -43,6 +45,17 @@ public class Result {
 
 	public long getCost() {
 		return cost;
+	}
+
+	@Override
+	public String toString() {
+		String name = this.name + " ";
+		String dateRange = "(" + DateUtils.toString(this.startDate) + "-" +  DateUtils.toString(this.endDate) +  "): ";
+		String impressions = this.impressions + " impressions ";
+		String cpm = "@ $" + this.cpm + " CPM ";
+		String cost = "= $" + this.cost;
+		
+		return name + dateRange + impressions + cpm + cost;
 	}
 	
 }

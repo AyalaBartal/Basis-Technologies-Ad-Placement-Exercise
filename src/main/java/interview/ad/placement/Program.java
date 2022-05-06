@@ -30,7 +30,7 @@ public class Program {
 	@PostConstruct
 	public void init() {
 		System.out.println("start program");
-		Input input = reader.readFromFiles("a", "b");
+		Input input = reader.readFromFiles("files\\\\placements.csv", "files\\\\deliveries.csv");
 		Output output = core.processDataByPlacement(new CoreDataBuilder().add(input).build());
 		writer.write(output);
 		System.out.println("end program");
