@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExampleController {
 
 /*
+-Linux terminal-
 curl -X GET -sb \
 -H "Accept: application/json" \
-'http://localhost:8081/api/v1/example/hello' 	 
+'http://localhost:8081/api/v1/example/hello' 
+
+-Windows cmd- 
+curl -H "Accept: application/json" "http://localhost:8081/api/v1/example/hello"	 	 
 */
 	@RequestMapping(value = "/hello")
 	public String getHello() {
@@ -20,10 +24,14 @@ curl -X GET -sb \
 	}
 
 /*
+-Linux terminal-
 curl -X POST \
 -H "Content-Type: application/json"  \
 'http://localhost:8081/api/v1/example/files' \
--d '{"name":"me","lastName":"me last"}'	  
+-d '{"name":"me","lastName":"me last"}'
+ 
+-Windows cmd- 
+curl -H "Content-Type: application/json" "http://localhost:8081/api/v1/example/files" -d "{ \"a\":\"1\", \"b\":\"2\"}"		   
  */
 	@RequestMapping(value ="/files", method = RequestMethod.POST)
 	public Object writeFiles(@RequestBody Object input) {
