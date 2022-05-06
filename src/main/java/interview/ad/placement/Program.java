@@ -27,13 +27,12 @@ public class Program {
 		this.writer = writer;
 	}
 
-	@PostConstruct
-	public void init() {
-		System.out.println("start program");
-		Input input = reader.readFromFiles("files\\\\placements.csv", "files\\\\deliveries.csv");
+	public String processFromFileByPlacment(String placmentFilePath, String deliveryFilePath) {
+
+		Input input = reader.readFromFiles(placmentFilePath, deliveryFilePath);
 		Output output = core.processDataByPlacement(new CoreDataBuilder().add(input).build());
-		writer.write(output);
-		System.out.println("end program");
+		return writer.writeToCommandLine(output);
+
 	}
 
 }

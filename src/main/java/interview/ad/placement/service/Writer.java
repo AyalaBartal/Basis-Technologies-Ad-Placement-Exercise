@@ -8,9 +8,12 @@ import interview.ad.placement.model.Result;
 @Component
 public class Writer {
 	
-	public void write(Output data) {
+	public String writeToCommandLine(Output data) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("\n").append("The result of the processing are:").append("\n");
 		for(Result result: data.getResult())
-			System.out.println(result.toString());
+			sb.append(result.toString()).append("\n");
+		return sb.toString();
 	}
 
 }
