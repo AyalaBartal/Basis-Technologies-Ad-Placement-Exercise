@@ -1,8 +1,5 @@
 package interview.ad.placement.integrationTest;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +11,7 @@ import interview.ad.placement.model.Delivery;
 import interview.ad.placement.model.Input;
 import interview.ad.placement.model.Placement;
 import interview.ad.placement.service.Reader;
-import utils.DateUtils;
+import interview.ad.placement.utils.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Reader.class})

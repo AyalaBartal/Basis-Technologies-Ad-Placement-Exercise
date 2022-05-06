@@ -5,9 +5,7 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 import interview.ad.placement.model.CoreData;
-import interview.ad.placement.model.CoreDataBuilder;
 import interview.ad.placement.model.Delivery;
-import interview.ad.placement.model.Input;
 import interview.ad.placement.model.Output;
 import interview.ad.placement.model.Placement;
 import interview.ad.placement.model.Result;

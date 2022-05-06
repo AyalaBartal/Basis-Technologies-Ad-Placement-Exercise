@@ -1,8 +1,5 @@
 package interview.ad.placement.unitTest;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
 
 import interview.ad.placement.model.CoreData;
@@ -10,7 +7,7 @@ import interview.ad.placement.model.CoreDataBuilder;
 import interview.ad.placement.model.Delivery;
 import interview.ad.placement.model.Input;
 import interview.ad.placement.model.Placement;
-import utils.DateUtils;
+import interview.ad.placement.utils.DateUtils;
 
 import org.junit.Assert;
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import utils.DateUtils;
+import interview.ad.placement.utils.DateUtils;
 
 public class Result {
 	

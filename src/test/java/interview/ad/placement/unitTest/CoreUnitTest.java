@@ -1,8 +1,5 @@
 package interview.ad.placement.unitTest;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,7 +8,7 @@ import interview.ad.placement.model.Delivery;
 import interview.ad.placement.model.Output;
 import interview.ad.placement.model.Placement;
 import interview.ad.placement.service.Core;
-import utils.DateUtils;
+import interview.ad.placement.utils.DateUtils;
 
 public class CoreUnitTest {
 	
@@ -62,7 +59,7 @@ public class CoreUnitTest {
 		Assert.assertEquals(DateUtils.getDate(2020, 11, 1), output.getResult().get(0).getStartDate());
 		Assert.assertEquals(DateUtils.getDate(2020, 11, 20), output.getResult().get(0).getEndDate());
 		Assert.assertEquals(107182, output.getResult().get(0).getImpressions());
-		Assert.assertEquals(535, output.getResult().get(0).getCost());
+		Assert.assertEquals(536, output.getResult().get(0).getCost());
 	}
 	
 	@Test
