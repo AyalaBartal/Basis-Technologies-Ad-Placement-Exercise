@@ -10,17 +10,17 @@ public class Input {
 	private List<Delivery> deliveries;
 	private Map<String, Placement> placements;
 	
-	public Input() {
+	protected Input() {
 		super();
 		this.deliveries = new ArrayList<Delivery>();
 		this.placements = new HashMap<String, Placement>();
 	}
 	
-	public void add(Delivery delivery) {
+	protected void add(Delivery delivery) {
 		deliveries.add(delivery);
 	}
 	
-	public void add(Placement placement) {
+	protected void add(Placement placement) {
 		placements.put(placement.getName(), placement);
 	}
 

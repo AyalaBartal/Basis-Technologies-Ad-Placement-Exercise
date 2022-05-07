@@ -22,7 +22,7 @@ public class Core {
 			for(Integer id: data.getPlacements().keySet()) {
 				Placement placment = data.getPlacements().get(id);
 				String name = placment.getName();
-				int cmp = placment.getCmp();
+				int cmp = placment.getCpm();
 				long impressions = 0;
 				Date startDate = placment.getStart(), endDate = placment.getEnd();
 				for(Delivery delivery: data.getDeliveries().get(id)) {
@@ -49,7 +49,7 @@ public class Core {
 		
 		if(data != null && data.getPlacements().size() != 0) {
 			for(Integer id: data.getPlacements().keySet()) {
-				int cmp = data.getPlacements().get(id).getCmp();
+				int cmp = data.getPlacements().get(id).getCpm();
 				
 				for(Delivery delivery: data.getDeliveries().get(id)) {
 					impressions += delivery.getImpressions();

@@ -2,6 +2,8 @@ package interview.ad.placement.model;
 
 import java.util.Date;
 
+import interview.ad.placement.utils.DateUtils;
+
 public class Delivery {
 	
 	private int placmentId;
@@ -13,6 +15,16 @@ public class Delivery {
 		this.placmentId = placementId;
 		this.date = date;
 		this.impressions = impressions;
+	}
+	
+	public Delivery(String deliveryString) {
+		super();
+		deliveryString.replaceAll("\\s+", "");
+		String[] details = deliveryString.split(",");
+		
+		this.placmentId = Integer.valueOf(details[0]);
+		this.date = DateUtils.getDate(details[1]);
+		this.impressions = Long.parseLong(details[2]);
 	}
 
 	public int getPlacmentId() {

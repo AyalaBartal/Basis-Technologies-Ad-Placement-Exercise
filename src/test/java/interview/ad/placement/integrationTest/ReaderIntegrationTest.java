@@ -1,5 +1,7 @@
 package interview.ad.placement.integrationTest;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import interview.ad.placement.model.Delivery;
 import interview.ad.placement.model.Input;
+import interview.ad.placement.model.InputBuilder;
 import interview.ad.placement.model.Placement;
 import interview.ad.placement.service.Reader;
 import interview.ad.placement.utils.DateUtils;
@@ -21,42 +24,28 @@ public class ReaderIntegrationTest {
 	private Reader reader;
 	
 	@Test
-	public void readOneLineFile() {
-		String deliveryPath = "files\\oneLineDelivery.csv";
+	public void readOneLinePlacemntFile() {
 		String placementPath = "files\\oneLinePlacements.csv";
+		List<String> actual = reader.readFile(placementPath);
 
-		Input actual = reader.readFromFiles(placementPath, deliveryPath);
-		
-		Input mock = new Input();
-
-		mock.add(new Delivery(1, DateUtils.getDate(2020, 11, 1), 33427));
-		mock.add(new Placement(1, "Sports", DateUtils.getDate(2020, 11, 01), DateUtils.getDate(2020, 11, 30), 5));
-
-		Assert.assertTrue(mock.getPlacements().get("Sports").equals(actual.getPlacements().get("Sports")));
-		Assert.assertTrue(mock.getDeliveries().get(0).equals(actual.getDeliveries().get(0)));
+		Assert.assertEquals(1, actual.size());
+		Assert.assertEquals("1	Sports	11/1/20	11/30/20	5", actual.get(0));
 	}
 	
+	@Test
+	public void readOneLineDeliveryFile() {
+		String deliveryPath = "files\\oneLineDelivery.csv";
+		List<String> actual = reader.readFile(deliveryPath);
+
+		Assert.assertEquals(1, actual.size());
+		Assert.assertEquals("1,11/1/2020,33427", actual.get(0));
+	}
 	
 	@Test
 	public void readMultiLineFile() {
-		String deliveryPath = "files\\deliveries.csv";
-		String placementPath = "files\\placements.csv";
-
-		Input actual = reader.readFromFiles(placementPath, deliveryPath);
+		String deliveryPath = "files\\placements.csv"; 
+		List<String> actual = reader.readFile(deliveryPath);
 		
-		Assert.assertEquals(4, actual.getPlacements().size());
-		Assert.assertEquals(122, actual.getDeliveries().size());
+		Assert.assertEquals(4, actual.size());
 	}
-	
-	@Test
-	public void readerGetsFileNotInCorrectOrder() {
-		String deliveryPath = "files\\deliveries.csv";
-		String placementPath = "files\\placements.csv";
-
-		Input actual = reader.readFromFiles(deliveryPath, placementPath);
-		
-		Assert.assertEquals(4, actual.getPlacements().size());
-		Assert.assertEquals(122, actual.getDeliveries().size());
-	}
-
 }

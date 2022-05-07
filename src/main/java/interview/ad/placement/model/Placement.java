@@ -2,13 +2,15 @@ package interview.ad.placement.model;
 
 import java.util.Date;
 
+import interview.ad.placement.utils.DateUtils;
+
 public class Placement {
 	
 	private int id;
 	private String name;
 	private Date start;
 	private Date end;
-	private int cmp;
+	private int cpm;
 	
 	public Placement(int id, String name, Date start, Date end, int cmp) {
 		super();
@@ -16,7 +18,19 @@ public class Placement {
 		this.name = name;
 		this.start = start;
 		this.end = end;
-		this.cmp = cmp;
+		this.cpm = cmp;
+	}
+	
+	public Placement(String placement) {
+		super();
+		placement.replaceAll("\\s+","");
+		String[] details = placement.split("\t");
+		
+		this.id = Integer.valueOf(details[0]);
+		this.name = details[1];
+		this.start = DateUtils.getDate(details[2]);
+		this.end =  DateUtils.getDate(details[3]);
+		this.cpm = Integer.valueOf(details[4]);
 	}
 	
 	public String getName() {
@@ -35,8 +49,8 @@ public class Placement {
 		return end;
 	}
 
-	public int getCmp() {
-		return cmp;
+	public int getCpm() {
+		return cpm;
 	}
 
 	@Override
@@ -48,7 +62,7 @@ public class Placement {
 		if (getClass() != obj.getClass())
 			return false;
 		Placement other = (Placement) obj;
-		if (cmp != other.cmp)
+		if (cpm != other.cpm)
 			return false;
 		if (end == null) {
 			if (other.end != null)
