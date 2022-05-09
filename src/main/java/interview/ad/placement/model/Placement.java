@@ -22,9 +22,12 @@ public class Placement {
 		this.cpm = cmp;
 	}
 	
-	public Placement(String placement) {
+	public Placement(String placement) throws Exception {
 		super();
 		String[] details = StringUtils.splitString(placement);
+		
+		if(details.length != 5)
+			throw new Exception("Wrong file enter for placment");
 		
 		this.id = Integer.valueOf(details[0]);
 		this.name = details[1];

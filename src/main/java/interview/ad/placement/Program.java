@@ -1,5 +1,6 @@
 package interview.ad.placement;
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,19 @@ public class Program {
 		this.writer = writer;
 	}
 
-	public String processFromFileByPlacment(String placmentFilePath, String deliveryFilePath) {
+	public String processFromFileByPlacment(String placmentFilePath, String deliveryFilePath) throws FileNotFoundException, Exception {
 		Input input = createInput(placmentFilePath, deliveryFilePath);
 		Output output = core.processDataByPlacement(new CoreDataBuilder().add(input).build());
 		return writer.writeToCommandLine(output);
 	}
 	
-	public String processByDateRange(String placmentFilePath, String deliveryFilePath, Date startDate, Date endDate) {
+	public String processByDateRange(String placmentFilePath, String deliveryFilePath, Date startDate, Date endDate) throws FileNotFoundException, Exception {
 		Input input = createInput(placmentFilePath, deliveryFilePath);
 		Output output = core.processDataByDateRange(new CoreDataBuilder().add(input, startDate, endDate).build(), startDate, endDate);
 		return writer.writeToCommandLine(output);
 	}
 	
-	private Input createInput(String placmentFilePath, String deliveryFilePath) {
+	private Input createInput(String placmentFilePath, String deliveryFilePath) throws FileNotFoundException, Exception {
 		return new InputBuilder()
 				.addPlacements(reader.readFile(placmentFilePath))
 				.addDeliveries(reader.readFile(deliveryFilePath))

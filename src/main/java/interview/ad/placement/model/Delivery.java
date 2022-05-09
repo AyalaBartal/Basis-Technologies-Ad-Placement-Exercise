@@ -18,9 +18,12 @@ public class Delivery {
 		this.impressions = impressions;
 	}
 	
-	public Delivery(String deliveryString) {
+	public Delivery(String deliveryString) throws Exception {
 		super();
 		String[] details = StringUtils.splitString(deliveryString);
+		
+		if (details.length != 3)
+			throw new Exception("Wrong file enter for delivery");
 		
 		this.placmentId = Integer.valueOf(details[0]);
 		this.date = DateUtils.getDate(details[1]);

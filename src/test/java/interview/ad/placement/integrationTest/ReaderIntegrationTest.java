@@ -1,5 +1,6 @@
 package interview.ad.placement.integrationTest;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.junit.Assert;
@@ -24,7 +25,7 @@ public class ReaderIntegrationTest {
 	private Reader reader;
 	
 	@Test
-	public void readOneLinePlacemntFile() {
+	public void readOneLinePlacemntFile() throws Exception {
 		String placementPath = "files\\oneLinePlacements.csv";
 		List<String> actual = reader.readFile(placementPath);
 
@@ -33,7 +34,7 @@ public class ReaderIntegrationTest {
 	}
 	
 	@Test
-	public void readOneLineDeliveryFile() {
+	public void readOneLineDeliveryFile() throws Exception {
 		String deliveryPath = "files\\oneLineDelivery.csv";
 		List<String> actual = reader.readFile(deliveryPath);
 
@@ -42,7 +43,7 @@ public class ReaderIntegrationTest {
 	}
 	
 	@Test
-	public void readMultiLineFile() {
+	public void readMultiLineFile() throws Exception {
 		String deliveryPath = "files\\placements.csv"; 
 		List<String> actual = reader.readFile(deliveryPath);
 		

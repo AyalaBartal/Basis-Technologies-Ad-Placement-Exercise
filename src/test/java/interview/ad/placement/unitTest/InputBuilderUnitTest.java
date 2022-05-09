@@ -67,7 +67,7 @@ public class InputBuilderUnitTest {
 	}
 	
 	@Test
-	public void testOnePlacmentStringOneDeliveryString() {
+	public void testOnePlacmentStringOneDeliveryString() throws Exception {
 		Input input = new InputBuilder()
 						.addPlacement("4	Politics	12/1/20	12/31/20	6")
 						.addDelivery("1,11/1/2020,33427")
@@ -81,7 +81,7 @@ public class InputBuilderUnitTest {
 	
 	
 	@Test
-	public void testPlacmentDeliveryFromStringList() {
+	public void testPlacmentDeliveryFromStringList() throws Exception {
 		List<String> pl = Arrays.asList("4	Politics	12/1/20	12/31/20	6");
 		List<String> dl = Arrays.asList("1,11/1/2020,33427");
 		Input input = new InputBuilder()
