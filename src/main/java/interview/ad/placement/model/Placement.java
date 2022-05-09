@@ -3,6 +3,7 @@ package interview.ad.placement.model;
 import java.util.Date;
 
 import interview.ad.placement.utils.DateUtils;
+import interview.ad.placement.utils.StringUtils;
 
 public class Placement {
 	
@@ -23,8 +24,7 @@ public class Placement {
 	
 	public Placement(String placement) {
 		super();
-		placement.replaceAll("\\s+","");
-		String[] details = placement.split("\t");
+		String[] details = StringUtils.splitString(placement);
 		
 		this.id = Integer.valueOf(details[0]);
 		this.name = details[1];

@@ -3,6 +3,7 @@ package interview.ad.placement.model;
 import java.util.Date;
 
 import interview.ad.placement.utils.DateUtils;
+import interview.ad.placement.utils.StringUtils;
 
 public class Delivery {
 	
@@ -19,8 +20,7 @@ public class Delivery {
 	
 	public Delivery(String deliveryString) {
 		super();
-		deliveryString.replaceAll("\\s+", "");
-		String[] details = deliveryString.split(",");
+		String[] details = StringUtils.splitString(deliveryString);
 		
 		this.placmentId = Integer.valueOf(details[0]);
 		this.date = DateUtils.getDate(details[1]);
