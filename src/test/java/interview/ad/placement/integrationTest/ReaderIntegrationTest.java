@@ -1,6 +1,5 @@
 package interview.ad.placement.integrationTest;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.junit.Assert;
@@ -10,12 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import interview.ad.placement.model.Delivery;
-import interview.ad.placement.model.Input;
-import interview.ad.placement.model.InputBuilder;
-import interview.ad.placement.model.Placement;
 import interview.ad.placement.service.Reader;
-import interview.ad.placement.utils.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Reader.class})
